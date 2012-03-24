@@ -1,19 +1,54 @@
 body {
-    padding-top: 60px;
-    background-color: #BFD7F1;
-    font-family: Georgia;
+    background-color: #8AAFD9;
+    background-color: #8BAFD8;
 }
 
-h1 {
-    font-family: Georgia;
-    color: #97AFC9;
+hr {
+    border: none;
+        /* top    */ border-top: 2px solid #f5f5f5;
+        /* middle */ background-color: #97DCFF; color: #97DCFF;
+    height: 1px;
 }
 
-.hero-unit {
-    color: #D54340;
-    background-color: #FFFFFE;
+h2 {
+    padding-top: 10px;
+    color: white;
+    font-family: serif;
+    font-size: 2.5em;
+}
+
+h3 {
+    padding-top: 10px;
+    color: white;
+    font-family: serif;
+    font-size: 2.1em;
+}
+
+p {
+    padding-top: 10px;
+    font-family: Georgia;
+    font-size: 1.5em;
+    line-height: 110%;
+    color: white;
+}
+
+.container {
+}
+
+.headings {
+    font-color: white;
 }
 
 .footer {
     color: white;
+}
+
+.right {
+    text-align: right;
+}
+
+
+.center {
+    text-align: center;
+    vertical-align: middle;
 }
