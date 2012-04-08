@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block body %}
+   <div class="container">
+
+      <div class="content">
+          <h2>Database</h2>
+          <p><b>DB Status:  </b>{{ db_ver_num }}</p>
+
+            <a href="/sysaction/update-schema" class="btn large primary">Update Schema</a>
+
+            <a href="/sysaction/initiate-schema" class="btn large primary">Initiate Schema</a>
+
+      </div>
+
+{% endblock %}

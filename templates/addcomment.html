@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <div class="container">
+
+      <div class="content">
+          <div class="clearfix">
+          <h3>Upload a file:</h3>
+          <form action="" method=post enctype=multipart/form-data>
+             <div class="clearfix">
+            <label>Your comment:</label>
+            <div class="input">
+              <input type=file name=file>
+            </div>
+
+          </div>
+             <div class="actions">
+                <input type="submit" class="btn primary" value="Upload">&nbsp;<button type="reset" class="btn">Cancel</button>
+          </div>
+          </form>
+
+
+      </div>
+
+{% endblock %}
