@@ -1,10 +1,13 @@
+from flaskext.wtf.html5 import EmailField
 import os
 from flask import Flask, session
 from flask import render_template
 from flask.globals import request
 from flaskext.sqlalchemy import SQLAlchemy
 from logbook import debug
+from werkzeug.exceptions import abort
 from werkzeug.utils import redirect, secure_filename
+from wtforms.fields.simple import TextAreaField
 from orm import orm, ContentItem, Postcard, Image
 
 app = Flask(__name__)
@@ -40,6 +43,28 @@ def products():
 def marshmallows():
     return render_template('marshmallows.html')
 
+from flaskext.wtf import Form, TextField, Required
+
+class Enquiry(Form):
+    cust_name = TextField("customer-name", validators=[Required()])
+    phone_num = TextField("phone-name")
+    email = EmailField("email", validators=[Required()])
+    message = TextAreaField("message")
+
+@app.route('/contact.form', methods=["GET", "POST"])
+def contact_form():
+    enquiry = Enquiry()
+    if enquiry.validate_on_submit():
+        send_email(
+            enquiry.cust_name.data,
+            enquiry.email.data,
+            enquiry.phone_num.data,
+            enquiry.message.data
+        )
+        return render_template("thanks.html")
+    return render_template('contact_form.html', form=enquiry )
+
+# blog stuff
 ext_allowed = tuple('jpg jpe jpeg png gif svg bmp'.split())
 
 def allowed(filename):

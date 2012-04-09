@@ -32,12 +32,17 @@ h4 {
     font-family: serif;
     font-size: 2.1em;
 }
-p {
+ul,p {
     padding-top: 10px;
     font-family: Georgia;
     font-size: 1.5em;
     line-height: 110%;
-    color: black;
+    color: #333;
+}
+
+li {
+    list-style-position:inside;
+    margin:1em 0;
 }
 
 .hero-unit {

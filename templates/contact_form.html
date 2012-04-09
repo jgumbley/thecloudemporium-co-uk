@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block body %}
+{% block content %}
+<div class="row">
+    {% macro with_errors(field) %}
+    <div class="form_field">
+        {% if field.errors %}
+        {% set css_class = 'has_error ' + kwargs.pop('class', '') %}
+        {{ field(class=css_class, **kwargs) }}
+        <ul class="errors">{% for error in field.errors %}<li>{{ error|e }}</li>{% endfor %}</ul>
+        {% else %}
+        {{ field(**kwargs) }}
+        {% endif %}
+    </div>
+    {% endmacro %}
+    <div class="span12">
+        <h3>Your Details:</h3>
+        <form method="post">
+            <fieldset>
+                <div class="clearfix">
+                    {{ form.hidden_tag() }}
+                    <label>Full Name</label>
+                    <div class="input">
+                        {{ with_errors( form.cust_name ) }}
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <label>Contact Number</label>
+                    <div class="input">
+                        {{ form.phone_num }}
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <label>Email Address</label>
+                    <div class="input">
+                        {{ with_errors(form.email) }}
+                    </div>
+                </div>
+                {%  if product is not defined %}
+                <div class="clearfix">
+                    <label>Message</label>
+                    <div class="input">
+                        {{ form.message(rows="4", class="xxlarge") |safe }}
+                    </div>
+                </div>
+                {%  endif %}
+                <br/>
+                <br/>
+                <div class="actions">
+                    <input type="submit" action="." class="btn primary" value="Next &raquo;">&nbsp;<button type="reset" class="btn">Cancel</button>
+                </div>
+
+            </fieldset>
+        </form>
+
+    </div>
+</div>
+
+{% endblock content %}
+{% endblock %}
