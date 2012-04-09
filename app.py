@@ -28,28 +28,17 @@ from authentication import authweb, requires_login
 app.register_blueprint(authweb)
 
 @app.route('/')
-@app.route('/welcome')
+@app.route('/index.html')
 def index():
-    return render_template('index.html',
-                           comments=ContentItem.get_all_not_banned(),
-                           user=session.get("user") )
+    return render_template('index.html')
 
-@app.route('/ban/<item>')
-@requires_login
-def ban(item):
-    item = ContentItem.get_by_id(item)
-    item.banned = True
-    item.save()
-    return redirect("/")
+@app.route('/products.html')
+def products():
+    return render_template('products.html')
 
-@app.route('/upload_image')
-def upload_img():
-    return render_template("upload.html")
-
-@app.route('/postcard/add')
-@requires_login
-def postcard_add_form():
-    return render_template('addcomment.html' )
+@app.route('/marshmallows.html')
+def marshmallows():
+    return render_template('marshmallows.html')
 
 ext_allowed = tuple('jpg jpe jpeg png gif svg bmp'.split())
 
@@ -78,12 +67,6 @@ def postcard_add():
         return redirect('/postcards')
     else:
         return "Invalid file type"
-
-@app.route('/postcards')
-def list_postcards():
-    return render_template("list_postcards.html",
-                           postcards=Postcard.get_all(),
-                           user=session.get("user"))
 
 if __name__ == '__main__':
     app.run(debug=True)
