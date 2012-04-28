@@ -2,3 +2,4 @@ Flask
 Flask-WTF
 WTForms
 distribute
+gunicorn==0.13.4
