@@ -1,10 +1,5 @@
 Flask
-Flask-OAuth
-oauth
-Flask-sqlalchemy
-sqlalchemy
-sqlalchemy-migrate
-#psycopg2
 logbook
 Flask-WTF
 WTForms
+distribute
