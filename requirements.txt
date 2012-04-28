@@ -1,5 +1,4 @@
 Flask
-logbook
 Flask-WTF
 WTForms
 distribute

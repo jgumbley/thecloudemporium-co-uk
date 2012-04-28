@@ -1,10 +1,7 @@
 from flaskext.wtf.html5 import EmailField
 import os
-from flask import Flask, session
+from flask import Flask
 from flask import render_template
-from flask.globals import request
-from logbook import debug
-from werkzeug.utils import redirect, secure_filename
 from wtforms.fields.simple import TextAreaField
 
 app = Flask(__name__)
@@ -45,4 +42,5 @@ def contact_form():
     return render_template('contact_form.html', form=enquiry )
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=True, host='0.0.0.0', port=port)
